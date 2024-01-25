@@ -1,5 +1,5 @@
-# saup's king
+# 사업의 신
 
 ## Tech stack
-- Frontend: React.js
+- Frontend: Next.JS
 - Backend: Firebase
