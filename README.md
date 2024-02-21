@@ -1,10 +1,8 @@
 # KIS Automated Trading System
-- KIS Autotrader is a automated trading tool which interacts with KIS API.
-- It is a OOP program without any web framework.
-- It runs on CMD enviroment.
-- 오직 대장주만 선택
-- 틱단위 기울기(양의 방향 기울기 회수) + 기관이 들어온것 같은 장대 1분봉 거래량(금액): 금액은 매번 수동 설정
-- (안전장치: 볼린저밴드에 가까워 지면 매도)
+- 키움증권은 보안 인증을 여러번 거쳐야 되서 도저히 만들 수 없다.
+- CLI로만 트레이딩 한다.
+- 기본적으로 CLI로 매수, 매매, 동향 보기를 만든다.
+- OOP로 만든다.
 
 ## Techstack
 - MacOS
