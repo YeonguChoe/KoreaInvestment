@@ -7,5 +7,6 @@
 - (안전장치: 볼린저밴드에 가까워 지면 매도)
 
 ## Techstack
+- MacOS
 - Python
 - [KIS Developers OpenAPI](https://apiportal.koreainvestment.com/about)
