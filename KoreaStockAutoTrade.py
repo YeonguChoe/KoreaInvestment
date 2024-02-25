@@ -14,7 +14,6 @@ ACNT_PRDT_CD = _cfg['ACNT_PRDT_CD']
 URL_BASE = _cfg['URL_BASE']
 
 def send_message(msg):
-    """디스코드 메세지 전송"""
     now = datetime.datetime.now()
     message = {"content": f"[{now.strftime('%Y-%m-%d %H:%M:%S')}] {str(msg)}"}
     print(message)
@@ -216,6 +215,7 @@ def sell(code="450140", qty="1"):
 # Operation
 
 ACCESS_TOKEN = get_access_token()
+print(ACCESS_TOKEN)
 # buy(code="016880",qty="1")
 # sell(code="016880",qty="1")
 
