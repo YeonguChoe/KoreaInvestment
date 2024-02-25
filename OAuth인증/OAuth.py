@@ -40,6 +40,8 @@ def get_access_token():
 
     URL = url + "/oauth2/tokenP"
     res = requests.post(URL, data=json.dumps(body)).json()
+    # 저장
+    save_access_token(res)
 
     return res
 
@@ -62,3 +64,15 @@ def read_access_token():
     with open("OAuth인증/access_token.json", "r") as file:
         access_token_dictionary = json.load(file)
     return access_token_dictionary["access_token"]
+
+
+def save_approval_key(approval_key):
+    python_json = {"approval_key": approval_key}
+    json_str = json.dumps(python_json) # convert from dict to JSON formatted str
+    with open("./OAuth인증/approval_key.json", "w") as json_file:
+        json_file.write(json_str)
+
+def read_approval_key():
+    with open("OAuth인증/approval_key.json", "r") as file:
+        access_token_dictionary = json.load(file)
+    return access_token_dictionary["approval_key"]
