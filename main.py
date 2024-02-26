@@ -7,13 +7,8 @@ import asyncio
 
 
 async def main():
-    t = read_access_token()
-    # print(get_current_price1(t, "010660"))
-    print(sell(t, "010660", "4610", "1"))
-    # print(cancel_order(t, "0000142531"))
-    # print(list_sell_order(t))
-    # print(get_remaining_cash(t))
-    # print(get_remaining_stock(t))
+    k = read_approval_key()
+    await get_current_price2(k, "005930")
 
 
 if __name__ == "__main__":

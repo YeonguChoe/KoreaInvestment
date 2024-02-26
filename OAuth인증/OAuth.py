@@ -14,7 +14,11 @@ def get_approval_key():
         "secretkey": APP_Secret,
     }
     URL = url + "/oauth2/Approval"
-    res = requests.post(URL, data=json.dumps(body)).json()["approval_key"]
+    res = requests.post(URL, data=json.dumps(body)).json()
+    # JSON으로 저장
+    save_approval_key(res)
+    # approval_key값만 추출
+    res = res["approval_key"]
     return res
 
 
@@ -67,10 +71,10 @@ def read_access_token():
 
 
 def save_approval_key(approval_key):
-    python_json = {"approval_key": approval_key}
-    json_str = json.dumps(python_json) # convert from dict to JSON formatted str
+    json_str = json.dumps(approval_key)  # convert from dict to JSON formatted str
     with open("./OAuth인증/approval_key.json", "w") as json_file:
         json_file.write(json_str)
+
 
 def read_approval_key():
     with open("OAuth인증/approval_key.json", "r") as file:
