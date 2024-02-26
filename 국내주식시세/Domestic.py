@@ -7,14 +7,14 @@ from credential import *
 
 
 # 주식현재가 시세
-def get_current_price1(access_token, ticker):
+def get_current_price1(access_token, ticker_symbol):
     header = {
         "authorization": "Bearer " + access_token,
         "appkey": APP_Key,
         "appsecret": APP_Secret,
         "tr_id": "FHKST01010100",
     }
-    query_parameter = {"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": ticker}
+    query_parameter = {"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": ticker_symbol}
     URL = url + "/uapi/domestic-stock/v1/quotations/inquire-price"
     res = requests.get(url=URL, params=query_parameter, headers=header)
     # text 형식으로 변환

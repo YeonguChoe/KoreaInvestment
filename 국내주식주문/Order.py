@@ -79,6 +79,8 @@ def list_buy_order(access_token):
     res = requests.get(URL, headers=header, params=query_parameter).text
     # str을 dict로 변환
     res = json.loads(res)["output1"]
+    # 반환 하는 값
+    output = ""
     # 각 주문건에 대해 반복문
     for order in res:
         stock_name = order["prdt_name"]
@@ -86,9 +88,11 @@ def list_buy_order(access_token):
         order_number = order["odno"]
         order_price = order["ord_unpr"]
         order_qty = order["ord_qty"]
-        print(
-            f"종목: {stock_name} 주문가격:{order_price} 주문수량: {order_qty} 주문번호: {order_number} 주문날짜: {date}"
+        output = (
+            output
+            + f"종목: {stock_name} 주문가격:{order_price} 주문수량: {order_qty} 주문번호: {order_number} 주문날짜: {date}"
         )
+    return output
 
 
 # 미체결 sell건
@@ -119,6 +123,8 @@ def list_sell_order(access_token):
     res = requests.get(URL, headers=header, params=query_parameter).text
     # str을 dict로 변환
     res = json.loads(res)["output1"]
+    # 반환 하는 값
+    output = ""
     # 각 주문건에 대해 반복문
     for order in res:
         stock_name = order["prdt_name"]
@@ -126,9 +132,11 @@ def list_sell_order(access_token):
         order_number = order["odno"]
         order_price = order["ord_unpr"]
         order_qty = order["ord_qty"]
-        print(
-            f"종목: {stock_name} 주문가격:{order_price} 주문수량: {order_qty} 주문번호: {order_number} 주문날짜: {date}"
+        output = (
+            output
+            + f"종목: {stock_name} 주문가격:{order_price} 주문수량: {order_qty} 주문번호: {order_number} 주문날짜: {date}"
         )
+    return output
 
 
 # 주문 취소
