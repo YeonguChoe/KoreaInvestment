@@ -7,8 +7,11 @@ import asyncio
 
 
 async def main():
+    t = read_access_token()
     k = read_approval_key()
-    await get_current_price2(k, "005930")
+
+    print(print_daily_exchange_volume(t, "005930"))
+    await report_order_status(k,"005930")
 
 
 if __name__ == "__main__":

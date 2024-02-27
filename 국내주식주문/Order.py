@@ -8,6 +8,8 @@ from credential import *
 
 
 def buy(access_token, ticker_symbol, price, buy_quantity):
+    price = str(price)
+    buy_quantity = str(buy_quantity)
     header = {
         "authorization": "Bearer " + access_token,
         "appkey": APP_Key,
@@ -30,6 +32,8 @@ def buy(access_token, ticker_symbol, price, buy_quantity):
 
 
 def sell(access_token, ticker_symbol, price, sell_quantity):
+    price = str(price)
+    sell_quantity = str(sell_quantity)
     header = {
         "authorization": "Bearer " + access_token,
         "appkey": APP_Key,
