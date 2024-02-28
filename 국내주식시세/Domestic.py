@@ -58,6 +58,25 @@ def stock_info(access_token, ticker_symbol):
     return res
 
 
+# 주식 이름 받기
+def get_stock_name(access_token, ticker_symbol):
+    header = {
+        "authorization": "Bearer " + access_token,
+        "appkey": APP_Key,
+        "appsecret": APP_Secret,
+        "tr_id": "CTPF1604R",
+    }
+    query_parameter = {"PDNO": ticker_symbol, "PRDT_TYPE_CD": "300"}
+    URL = url + "/uapi/domestic-stock/v1/quotations/search-info"
+    res = requests.get(url=URL, params=query_parameter, headers=header).text
+    # dictionary 형식으로 변환
+    res = json.loads(res)["output"]
+    # 주식 이름만 추출하기
+    res = res["prdt_abrv_name"]
+
+    return res
+
+
 # 업종 분봉조회
 def get_candlestick(access_token, ticker_symbol):
     header = {

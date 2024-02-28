@@ -42,6 +42,8 @@ async def get_realtime_price(approval_key, ticker_symbol):
 
 # 웹소켓을 이용한 현재 주식 시세 조회
 async def print_realtime_price(access_token, approval_key, ticker_symbol):
+    # 주식 이름 받기
+    stock_name = get_stock_name(access_token=access_token,ticker_symbol=ticker_symbol)
     URL = WebSocket_url + "/tryitout/H0STCNT0"
 
     message = {
@@ -85,7 +87,7 @@ async def print_realtime_price(access_token, approval_key, ticker_symbol):
                 else:
                     circle = "⚪"
                     arrow = ""
-                print(f"{circle}{stock_info(access_token, ticker_symbol)["prdt_abrv_name"]} 실시간 주가: {res} {arrow}")
+                print(f"{circle}{stock_name} 실시간 주가: {res} {arrow}")
 
 
 # 실시간 주가를 반환하는 함수
@@ -123,6 +125,8 @@ async def get_realtime_price(approval_key, ticker_symbol):
 
 # 실시간 호가
 async def market_depth(access_token,approval_key,ticker_symbol):
+    # 주식 이름 받기
+    stock_name = get_stock_name(access_token=access_token,ticker_symbol=ticker_symbol)
     URL = WebSocket_url+"/tryitout/H0STASP0"
     message = {
         "header": {
@@ -146,7 +150,7 @@ async def market_depth(access_token,approval_key,ticker_symbol):
             if res[0]=="0":
                 res = res[3]
                 res = res.split('^')  # 수신데이터를 split '^'
-                print(f"종목: {stock_info(access_token, res[0])["prdt_abrv_name"]}({res[0]})")
+                print(f"종목: {stock_name}({res[0]})")
                 print(f"확인시간: {res[1][:2]}시{res[1][2:4]}분{res[1][4:6]}초 현재상황: {"장중" if res[2]=="0" else "장외"}")
                 print("======================================")
                 print("매도호가10 [%s]    잔량10 [%s]" % (res[12], res[32]))
