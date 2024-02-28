@@ -84,7 +84,7 @@ def get_candlestick(access_token, ticker_symbol):
 
 
 # 특정 날짜의 매수 매도 거래량 출력
-def print_daily_exchange_volume(
+def daily_exchange_volume(
     access_token, ticker_symbol, date=datetime.now().strftime("%Y%m%d")
 ):
 

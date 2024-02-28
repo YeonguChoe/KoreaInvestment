@@ -1,7 +1,8 @@
 import json
 from time import sleep
 import requests
-import datetime
+from datetime import *
+from 실시간시세.DomesticReal import *
 
 # 개인정보
 from credential import *
@@ -67,7 +68,7 @@ def list_buy_order(access_token):
         "CANO": CANO,
         "ACNT_PRDT_CD": ACNT_PRDT_CD,
         "INQR_STRT_DT": "20240101",
-        "INQR_END_DT": datetime.datetime.now().strftime("%Y%m%d"),
+        "INQR_END_DT": datetime.now().strftime("%Y%m%d"),
         "SLL_BUY_DVSN_CD": "02",
         "INQR_DVSN": "00",
         "PDNO": "",
@@ -96,7 +97,7 @@ def list_buy_order(access_token):
             output
             + f"종목: {stock_name} 주문가격:{order_price} 주문수량: {order_qty} 주문번호: {order_number} 주문날짜: {date}"
         )
-    return output
+    print(output)
 
 
 # 미체결 sell건
@@ -111,7 +112,7 @@ def list_sell_order(access_token):
         "CANO": CANO,
         "ACNT_PRDT_CD": ACNT_PRDT_CD,
         "INQR_STRT_DT": "20240101",
-        "INQR_END_DT": datetime.datetime.now().strftime("%Y%m%d"),
+        "INQR_END_DT": datetime.now().strftime("%Y%m%d"),
         "SLL_BUY_DVSN_CD": "01",
         "INQR_DVSN": "00",
         "PDNO": "",
@@ -140,7 +141,7 @@ def list_sell_order(access_token):
             output
             + f"종목: {stock_name} 주문가격:{order_price} 주문수량: {order_qty} 주문번호: {order_number} 주문날짜: {date}"
         )
-    return output
+    print(output)
 
 
 # 주문 취소
@@ -195,7 +196,7 @@ def get_remaining_cash(access_token):
 
 
 # 주식 잔고 조회
-def get_remaining_stock(access_token):
+async def get_remaining_stock(access_token, approval_key):
     URL = url + "/uapi/domestic-stock/v1/trading/inquire-balance"
     header = {
         "authorization": "Bearer " + access_token,
@@ -224,7 +225,9 @@ def get_remaining_stock(access_token):
     for stock in stock_list:
         if int(stock["hldg_qty"]) > 0:
             stock_dict[stock["pdno"]] = stock["hldg_qty"]
-            print(f"{stock['prdt_name']}({stock['pdno']}): {stock['hldg_qty']}주")
+            print(
+                f"{stock['prdt_name']}({stock['pdno']}): {stock['hldg_qty']}주 현재 주가: {await get_realtime_price(approval_key,stock['pdno'])}"
+            )
             sleep(0.1)
     print("============요약=============")
     print(f"주식 평가 금액: {evaluation[0]['scts_evlu_amt']}원")

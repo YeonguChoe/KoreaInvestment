@@ -10,8 +10,20 @@ async def main():
     t = read_access_token()
     k = read_approval_key()
 
-    print(print_daily_exchange_volume(t, "005930"))
-    await report_order_status(k,"005930")
+    # sell(t, "031860", 316, 1)
+    # sell(t, "245620", 691, 2)
+    # sell(t, "177350", 785, 1)
+    # get_remaining_stock(t)
+    list_sell_order(t)
+    # cancel_order(t,"0000134331")
+    # print(await get_realtime_price(k,"031860"))
+    # print(await get_realtime_price(k,"245620"))
+    # print(await get_realtime_price(k,"177350"))
+    # await report_order_status(k,"005930")
+    # list_buy_order(t)
+    # cancel_order(t,"0000140020")
+    await get_remaining_stock(t,k)
+
 
 
 if __name__ == "__main__":
