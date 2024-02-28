@@ -10,8 +10,8 @@ async def main():
     t = read_access_token()
     k = read_approval_key()
 
-    await market_depth(t,k,"005930")
-
+    await print_realtime_price(t, k, "005930")
+    # await market_depth(t, k, "005930")
 
 
 if __name__ == "__main__":

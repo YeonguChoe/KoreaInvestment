@@ -8,6 +8,7 @@ from 국내주식시세.Domestic import *
 # 개인정보
 from credential import *
 
+
 # 웹소켓을 이용한 현재 주식 시세 조회
 async def get_realtime_price(approval_key, ticker_symbol):
     URL = WebSocket_url + "/tryitout/H0STCNT0"
@@ -35,15 +36,16 @@ async def get_realtime_price(approval_key, ticker_symbol):
                 res = res[3]
                 res = res.split("^")
                 res = res[2]
-                
+
                 # int로 자료변환
                 res = int(res)
-                return(res)
+                return res
+
 
 # 웹소켓을 이용한 현재 주식 시세 조회
 async def print_realtime_price(access_token, approval_key, ticker_symbol):
     # 주식 이름 받기
-    stock_name = get_stock_name(access_token=access_token,ticker_symbol=ticker_symbol)
+    stock_name = get_stock_name(access_token=access_token, ticker_symbol=ticker_symbol)
     URL = WebSocket_url + "/tryitout/H0STCNT0"
 
     message = {
@@ -57,7 +59,7 @@ async def print_realtime_price(access_token, approval_key, ticker_symbol):
     }
 
     # 비교를 위한 array 변수
-    coordinate = [0,0]
+    coordinate = [0, 0]
 
     async with websockets.connect(URL, ping_interval=None) as websocket:
         # convert to JSON str
@@ -74,14 +76,14 @@ async def print_realtime_price(access_token, approval_key, ticker_symbol):
                 res = res[2]
                 # 새로운 값 대입
                 coordinate[0] = coordinate[1]
-                coordinate[1]=int(res)
+                coordinate[1] = int(res)
                 # 이전값과 비교
                 circle = ""
                 arrow = ""
-                if(coordinate[0]>coordinate[1]):
+                if coordinate[0] > coordinate[1]:
                     circle = "🔴"
                     arrow = "🔼"
-                elif(coordinate[0]<coordinate[1]):
+                elif coordinate[0] < coordinate[1]:
                     circle = "🟢"
                     arrow = "🔽"
                 else:
@@ -106,7 +108,7 @@ async def get_realtime_price(approval_key, ticker_symbol):
     }
 
     # 비교를 위한 array 변수
-    coordinate = [0,0]
+    coordinate = [0, 0]
 
     async with websockets.connect(URL, ping_interval=None) as websocket:
         # convert to JSON str
@@ -123,11 +125,12 @@ async def get_realtime_price(approval_key, ticker_symbol):
                 res = res[2]
                 return int(res)
 
+
 # 실시간 호가
-async def market_depth(access_token,approval_key,ticker_symbol):
+async def market_depth(access_token, approval_key, ticker_symbol):
     # 주식 이름 받기
-    stock_name = get_stock_name(access_token=access_token,ticker_symbol=ticker_symbol)
-    URL = WebSocket_url+"/tryitout/H0STASP0"
+    stock_name = get_stock_name(access_token=access_token, ticker_symbol=ticker_symbol)
+    URL = WebSocket_url + "/tryitout/H0STASP0"
     message = {
         "header": {
             "approval_key": approval_key,
@@ -137,7 +140,7 @@ async def market_depth(access_token,approval_key,ticker_symbol):
         },
         "body": {"input": {"tr_id": "H0STASP0", "tr_key": ticker_symbol}},
     }
-    async with websockets.connect(URL,ping_interval=None) as websocket:
+    async with websockets.connect(URL, ping_interval=None) as websocket:
         # convert to JSON str
         json_str = json.dumps(message)
         await websocket.send(message=json_str)
@@ -147,11 +150,13 @@ async def market_depth(access_token,approval_key,ticker_symbol):
             res = await websocket.recv()
             # 받은 메세지 처리
             res = res.split("|")
-            if res[0]=="0":
+            if res[0] == "0":
                 res = res[3]
-                res = res.split('^')  # 수신데이터를 split '^'
+                res = res.split("^")  # 수신데이터를 split '^'
                 print(f"종목: {stock_name}({res[0]})")
-                print(f"확인시간: {res[1][:2]}시{res[1][2:4]}분{res[1][4:6]}초 현재상황: {"장중" if res[2]=="0" else "장외"}")
+                print(
+                    f"확인시간: {res[1][:2]}시{res[1][2:4]}분{res[1][4:6]}초 현재상황: {'장중' if res[2]=='0' else '장외'}"
+                )
                 print("======================================")
                 print("매도호가10 [%s]    잔량10 [%s]" % (res[12], res[32]))
                 print("매도호가09 [%s]    잔량09 [%s]" % (res[11], res[31]))
