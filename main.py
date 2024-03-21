@@ -7,13 +7,15 @@ import asyncio
 
 
 async def main():
-    get_access_token()
-    get_approval_key()
+####################################################################################################
+# Token information (Leave it like this)
+    # get_access_token()
+    # get_approval_key()
     t = read_access_token()
     k = read_approval_key()
-
-    get_remaining_stock(t, k)
-
+####################################################################################################
+# write your trading script starting here!!!
+    
 
 if __name__ == "__main__":
     asyncio.run(main())

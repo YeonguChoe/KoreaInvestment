@@ -4,7 +4,7 @@ Some people have great trading knowledge but don't have coding experience.
 I made this python OOP script for the people who only have Mac or have great trading knowledge but little to no coding experience to be able to do system trading.
 
 ## Disclaimer
-- **Any loss of trading is the responsibility of trader, even if it occurred by technical reason.**
+- **Any loss of money is the responsibility of trader, even if it occurred by technical reason.**
 - **Any kind of loss of personal data (e.g, using public wifi) is responsibility of trader.**
 
 ## Setting up
