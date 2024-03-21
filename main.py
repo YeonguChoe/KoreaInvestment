@@ -7,13 +7,12 @@ import asyncio
 
 
 async def main():
+    get_access_token()
+    get_approval_key()
     t = read_access_token()
     k = read_approval_key()
 
-    get_price(t,"035420")
-
-    # await market_depth(t, k, "005930")
-    # get_price(t, "035420")
+    get_remaining_stock(t, k)
 
 
 if __name__ == "__main__":

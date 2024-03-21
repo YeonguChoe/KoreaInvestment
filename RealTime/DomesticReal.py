@@ -56,7 +56,7 @@ async def print_realtime_price(access_token, approval_key, ticker_symbol):
                 else:
                     circle = "⚪"
                     arrow = ""
-                print(f"{circle}{stock_name} 실시간 주가: {res} {arrow}")
+                print(f"{circle} Real-time stock price of {stock_name}: {res} won {arrow}")
 
 
 # 실시간 호가
