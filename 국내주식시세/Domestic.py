@@ -23,6 +23,7 @@ def get_price(access_token, ticker_symbol):
     res = res.text
     # dictionary 형식으로 변환
     res = json.loads(res)["output"]
+    print(f"Market price of {get_stock_name(access_token,ticker_symbol)}: {res["stck_hgpr"]} won")
     return res["stck_hgpr"]
 
 

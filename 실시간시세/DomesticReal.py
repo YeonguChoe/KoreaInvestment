@@ -43,7 +43,7 @@ async def get_realtime_price(approval_key, ticker_symbol):
 
 
 # 웹소켓을 이용한 현재 주식 시세 조회
-async def print_realtime_price(access_token, approval_key, ticker_symbol):
+async def get_realtime_price(access_token, approval_key, ticker_symbol):
     # 주식 이름 받기
     stock_name = get_stock_name(access_token=access_token, ticker_symbol=ticker_symbol)
     URL = WebSocket_url + "/tryitout/H0STCNT0"

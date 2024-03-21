@@ -1,3 +1,7 @@
-# 한국투자증권 알고리즘 매매
-코딩을 전혀 모르는 일반인들도 간단한 코딩 몇줄로 주식 거래 자동화를 할수 있도록 하기 위해 만들었습니다.
+# Korea Investment & Securities Algorithm trading
+In Korean stock market, every home trading software runs on only Windows.
+Some people have great trading knowledge but don't have coding experience.
+I made this python OOP script for the people who only have Mac or have great trading knowledge but little to no coding experience to be able to do system trading.
 
+## Setting up
+1. 

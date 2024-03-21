@@ -11,12 +11,14 @@ from credential import *
 def buy(access_token, ticker_symbol, price, buy_quantity):
     price = str(price)
     buy_quantity = str(buy_quantity)
+    
     header = {
         "authorization": "Bearer " + access_token,
         "appkey": APP_Key,
         "appsecret": APP_Secret,
         "tr_id": "TTTC0802U",
     }
+
     body = {
         "CANO": CANO,
         "ACNT_PRDT_CD": ACNT_PRDT_CD,
@@ -25,12 +27,12 @@ def buy(access_token, ticker_symbol, price, buy_quantity):
         "ORD_QTY": buy_quantity,
         "ORD_UNPR": price,
     }
+
     URL = url + "/uapi/domestic-stock/v1/trading/order-cash"
     res = requests.post(url=URL, headers=header, data=json.dumps(body)).text
     # str을 dict로 변환
     res = json.loads(res)
     return res
-
 
 def sell(access_token, ticker_symbol, price, sell_quantity):
     price = str(price)
