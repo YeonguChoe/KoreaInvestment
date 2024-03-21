@@ -26,20 +26,105 @@ async def main():
 6. Once, access token and approval key are generated, you can start trading.
 
 ## Information of the stock
+### Code you must keep in the main script
+- This code reads token and key for server connection.
+```python
+async def main():
+    t = read_access_token()
+    k = read_approval_key()
+```
+
 ### Basic Information
 - daily_exchange_volume
+    > If you don't put the date, it is set to today's date as default.
+    - example
+    ```python
+    daily_exchange_volume(t, "035420","20240101")
+    ```
+    - result
+    ```bash
+    ==================================================
+    Trade Quantity
+    ==================================================
+    Company name: NAVER
+    Date: 2024-March-21
+    ==================================================
+    Total buy quantity: 429405
+    Total sell quantity: 545601
+    ==================================================
+    ```
 - get_candlestick
+    - example
+    ```python
+
+    ```
+    - result
+    ```bash
+
+    ```
 - get_stock_name
+    - example
+    ```python
+
+    ```
+    - result
+    ```bash
+    
+    ```
 - get_price
+> This is not the real time price. It is a quote price.
+If you are looking for real time price, use `print_realtime_price` at the bottom.
+
+    - example
+    ```python
+
+    ```
+    - result
+    ```bash
+    
+    ```
 ### Realtime Information
 > For realtime information, you can only use theses method when the Korea stock market is opened (**PST 5:00 PM - 11:30 PM**)
-- get_realtime_price
+- print_realtime_price
+    - example
+    ```python
+
+    ```
+    - result
+    ```bash
+    
+    ```
+
 - market_depth
+    - example
+    ```python
+
+    ```
+    - result
+    ```bash
+    
+    ```
 
 ## Order
 ### Buy stock
 - buy
+    - example
+    ```python
+
+    ```
+    - result
+    ```bash
+    
+    ```
 - list_buy_order
+    - example
+    ```python
+
+    ```
+    - result
+    ```bash
+    
+    ```
 
 ### Sell stock
 - sell

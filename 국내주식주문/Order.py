@@ -227,7 +227,7 @@ async def get_remaining_stock(access_token, approval_key):
         if int(stock["hldg_qty"]) > 0:
             stock_dict[stock["pdno"]] = stock["hldg_qty"]
             print(
-                f"{stock['prdt_name']}({stock['pdno']}): {stock['hldg_qty']}주 현재 주가: {await get_realtime_price(approval_key,stock['pdno'])}"
+                f"{stock['prdt_name']}({stock['pdno']}): {stock['hldg_qty']}주 현재 주가: {await print_realtime_price(approval_key,stock['pdno'])}"
             )
             sleep(0.1)
     print("============요약=============")

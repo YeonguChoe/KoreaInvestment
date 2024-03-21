@@ -1,6 +1,8 @@
 import requests
 import json
 from datetime import *
+import calendar
+from datetime import datetime
 
 # 개인정보
 from credential import *
@@ -100,7 +102,9 @@ def get_candlestick(access_token, ticker_symbol):
 
     # # 테스트를 위해 저장하기
     json_data = json.loads(res.text)
-    return json_data["output2"][0]["cntg_vol"]
+    result = json_data["output2"][0]["cntg_vol"]
+    print(f"1 minute traded quantity: {result}")
+    return result
 
 
 # 특정 날짜의 매수 매도 거래량 출력
@@ -136,16 +140,21 @@ def daily_exchange_volume(
     parsed_date = datetime.strptime(date, "%Y%m%d")
     year = parsed_date.year
     month = parsed_date.month
+    month = calendar.month_name[month]
     day = parsed_date.day
     # 문자열 만들기
     text = f"""
 ==================================================
-{stock_info(access_token, ticker_symbol)["prdt_abrv_name"]} {year}년 {month}월 {day}일 체결량
+Trade Quantity
 ==================================================
-총 매수량(buy): {daily_buy_volume}
-총 매도량(sell): {daily_sell_volume}
+Company name: {stock_info(access_token, ticker_symbol)["prdt_abrv_name"]}
+Date: {year}-{month}-{day}
+==================================================
+Total buy quantity: {daily_buy_volume}
+Total sell quantity: {daily_sell_volume}
 ==================================================
     """
+    print(text)
     return text
 
 
