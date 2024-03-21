@@ -54,35 +54,28 @@ async def main():
     ==================================================
     ```
 - get_candlestick
+    - It prints out height of the most recent 1 minute candle stick.
     - example
     ```python
-
+    get_candlestick(t, "035420")
     ```
     - result
     ```bash
-
-    ```
-- get_stock_name
-    - example
-    ```python
-
-    ```
-    - result
-    ```bash
-    
+    1 minute traded quantity: 43129
     ```
 - get_price
-> This is not the real time price. It is a quote price.
-If you are looking for real time price, use `print_realtime_price` at the bottom.
+    > This is not the real time price. It is a quote price.
+    If you are looking for real time price, use `print_realtime_price` at the bottom.
 
     - example
     ```python
-
+    get_price(t,"035420")
     ```
     - result
     ```bash
-    
+    Market price of NAVER: 187800 won
     ```
+
 ### Realtime Information
 > For realtime information, you can only use theses method when the Korea stock market is opened (**PST 5:00 PM - 11:30 PM**)
 - print_realtime_price

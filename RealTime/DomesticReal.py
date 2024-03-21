@@ -2,7 +2,7 @@ import json
 import requests
 import websockets
 import asyncio
-from 국내주식시세.Domestic import *
+from DomesticStockInfo.Domestic import *
 
 
 # 개인정보
@@ -57,6 +57,7 @@ async def print_realtime_price(access_token, approval_key, ticker_symbol):
                     circle = "⚪"
                     arrow = ""
                 print(f"{circle}{stock_name} 실시간 주가: {res} {arrow}")
+
 
 # 실시간 호가
 async def market_depth(access_token, approval_key, ticker_symbol):

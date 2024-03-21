@@ -2,7 +2,7 @@ import json
 from time import sleep
 import requests
 from datetime import *
-from 실시간시세.DomesticReal import *
+from RealTime.DomesticReal import *
 
 # 개인정보
 from credential import *
