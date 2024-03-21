@@ -26,7 +26,28 @@ async def main():
 6. Once, access token and approval key are generated, you can start trading.
 
 ## Information of the stock
-
+### Basic Information
+- daily_exchange_volume
+- get_candlestick
+- get_stock_name
+- get_price
+### Realtime Information
+> For realtime information, you can only use theses method when the Korea stock market is opened (**PST 5:00 PM - 11:30 PM**)
+- get_realtime_price
+- market_depth
 
 ## Order
 ### Buy stock
+- buy
+- list_buy_order
+
+### Sell stock
+- sell
+- list_sell_order
+
+### Modifying order
+- cancel_order
+
+### Current Account status
+- get_remaining_cash
+- get_remaining_stock
