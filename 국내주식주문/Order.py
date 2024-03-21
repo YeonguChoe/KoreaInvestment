@@ -7,7 +7,6 @@ from 실시간시세.DomesticReal import *
 # 개인정보
 from credential import *
 
-
 def buy(access_token, ticker_symbol, price, buy_quantity):
     price = str(price)
     buy_quantity = str(buy_quantity)
